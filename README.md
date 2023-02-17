@@ -1,19 +1,14 @@
 # Rambler Autoreg
 Python script for automatic mail registration on rambler.
 
-## Installation and Running on Windows (without Git)
+## Installation and Running on Windows
 1. Install [Python 3.10.9](https://www.python.org/downloads/windows/), checking "Add Python to PATH"
-2. Download and unzip the rambler-autoreg repository.
-3. Run `start.bat` from Windows Explorer as normal, non-administrator, user.
+2. [Download](https://github.com/AlenKimov/rambler_autoreg/archive/refs/heads/main.zip) and unzip the rambler_autoreg repository.
+3. Run `install.bat`: this will install all the required libraries.
+4. Run `start.bat` to start the script.
 
-## Installation and Running on Windows (using Git)
-1. Install [Python 3.10.9](https://www.python.org/downloads/windows/), checking "Add Python to PATH"
-2. Install [Git](https://git-scm.com/download/win).
-3. Download the rambler-autoreg repository, for example by running `git clone https://github.com/AlenKimo/rambler-autoreg.git`.
-4. Run `start.bat` from Windows Explorer as normal, non-administrator, user.
-
-## [Eng] Settings
-The script settings are located in the `./balance_checker/settings` folder.
+## Settings (English)
+The script settings are located in the `./settings` folder.
 
 The basic settings are contained in `settings.toml`:
 
@@ -61,9 +56,10 @@ add_date = true
 #   If true, the console will display additional information
 debug = false
 # Run browser in headed mode
-#   The script works through browser emulation. By default, the browser runs in the background (headless mode).
-#  If true, the browser will start in the mode and you will see everything the script does.
-headed = talse
+#   The script works through browser emulation.
+#   By default, the browser runs in the background (headless mode).
+#   If true, the browser will start in the mode and you will see everything the script does.
+headed = false
 ```
 
 API keys for captcha-solving services are set in the `api_keys.toml` file:
@@ -73,8 +69,8 @@ ruCaptcha = 'api_key'
 AntiCaptcha = 'api_key'
 ```
 
-## [Рус] Настройки
-Настройки скрипта находятся в папке `./balance_checker/settings`.
+## Настройки (Русский)
+Настройки скрипта находятся в папке `./settings`.
 
 Основные настройки содержаться в `settings.toml`:
 
@@ -117,8 +113,10 @@ add_date = true
 #   При включенном флаге в консоль будет выводиться дополнительная информация
 debug = false
 # Запускать в headed режиме браузера?
-#   Скрипт работает через эмуляцию браузера. По умолчанию браузер работает в фоне (headless режим).
-#   При включенном флаге браузер будет запускаться в headed режиме и вы будете видеть все, что делает скрипт.
+#   Скрипт работает через эмуляцию браузера.
+#   По умолчанию браузер работает в фоне (headless режим).
+#   При включенном флаге браузер будет запускаться в headed режиме 
+#   и вы будете видеть все, что делает скрипт
 headed = false
 ```
 
@@ -134,7 +132,7 @@ API ключи можно взять здесь:
 - AntiCaptcha: https://anti-captcha.com/clients/settings/apisetup
 
 ## Output
-The script writes the output data to files in the `./rambler_autoreg/output` folder.
+The script writes the output data to files in the `./output` folder.
 
 ## Credits
 - [hurek](https://github.com/hurek)/**[mail_farmer](https://github.com/hurek/mail_farmer)**
