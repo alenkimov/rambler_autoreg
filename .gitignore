@@ -1,0 +1,13 @@
+# pycache
+rambler_autoreg/__pycache__
+__pycache__
+
+# dotfiles
+.venv
+.idea
+
+# custom
+rambler_autoreg/test*
+settings
+output
+log
