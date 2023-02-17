@@ -1,0 +1,40 @@
+# |<----  Using a Maximum Of 50 Characters  ---->|
+# In general the pattern mostly looks like this:
+# type(scope?): subject
+
+# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
+# Explain how the commit addresses the issue
+
+# IMPORTANT!! Describe any side effects of the change.
+
+# Provide links or keys to any relevant tickets, articles or other resources
+# Examples: "Jira issue [ABC-123]" or "Closes Github issue #123"
+
+# --- COMMIT END ---
+# About Conventional Commits: https://www.conventionalcommits.org/en/v1.0.0-beta.4/
+# Commits examples: https://github.com/conventional-changelog/commitlint
+# --------------------
+# Type can be
+#   feat     (new feature)
+#   fix      (bug fix)
+#   refactor (refactoring production code)
+#   style    (formatting, missing semi colons, etc; no code change)
+#   docs     (changes to documentation)
+#   test     (adding or refactoring tests; no production code change)
+#   chore    (updating grunt tasks etc; no production code change)
+#   wip      (work in progress commit to be squashed -- do not push!)**
+# --------------------
+# Remember to
+#   - Capitalize the subject line
+#   - Use the imperative mood in the subject line
+#   - Do not end the subject line with a period
+#   - Separate subject from body with a blank line
+#   - Use the body to explain what and why vs. how
+#   - Can use multiple lines with "-" for bullet points in body.
+# --------------------
+# ** wip commit type
+#   A wip commit should only happen on a local branch. These commits are for
+#   unfinished snapshots that should not be checked into a shared branch.
+#   These commits should be squashed before changes are merged to
+#   a shared branch.
+# --------------------
