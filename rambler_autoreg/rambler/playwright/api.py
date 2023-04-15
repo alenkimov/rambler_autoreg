@@ -74,26 +74,30 @@ class PlaywrightRamblerAPI:
         page = context.new_page()
         page.goto('https://id.rambler.ru/login-20/mail-registration')
 
-        # Ввод логина и выбор домена
-        page.locator('#login').type(login)
-        page.locator('input[value="@rambler.ru"]').click()
-        page.get_by_text(domain).click()
+        # Форма с полями для ввода данных
+        form = page.locator('form')
+        form.locator('label[for=reg_recaptcha]').wait_for()  # Ждем полной загрузки формы
 
-        # Ввод пароля
-        page.locator('#newPassword').type(password)
-        page.locator('#confirmPassword').type(password)
+        # Ввод логина и выбор домена
+        form.locator('input[id=reg_login]').type(login)
+        form.locator('input[value="@rambler.ru"]').click()
+        form.get_by_text(domain).click()
+
+        # Ввод пароля reg_new_password reg_confirm_password
+        form.locator('input[id=reg_new_password]').type(password)
+        form.locator('input[id=reg_confirm_password]').type(password)
 
         # Выбор и ввод секретного вопроса
-        page.get_by_placeholder("Выберите вопрос").click()
-        page.get_by_text("Кличка домашнего животного").click()
-        page.locator('#answer').type(secret)
+        form.locator('//section[4]/div/div/div/div/div/div/input').click()
+        form.get_by_text("Кличка домашнего животного").click()
+        form.locator('input[id=reg_answer]').type(secret)
 
         # Решение капчи
         self._solver.solve(page)
         try:
-            page.click("button[type=submit]")
-        except PlaywrightTimeoutError:
-            logger.error(f'')
+            page.click('button[type=submit]')
+        except PlaywrightTimeoutError as exception:
+            logger.exception(exception)
 
         # Ввод имени и фамилии
         page.locator("#firstname").type(firstname)
