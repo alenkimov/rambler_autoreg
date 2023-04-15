@@ -2,13 +2,13 @@
 Python script for automatic mail registration on rambler.
 
 ## Installation and Running on Windows
-1. Install [Python 3.10.9](https://www.python.org/downloads/windows/), checking "Add Python to PATH"
+1. Install [Python 3.11](https://www.python.org/downloads/windows/), checking "Add Python to PATH".
 2. [Download](https://github.com/AlenKimov/rambler_autoreg/archive/refs/heads/main.zip) and unzip the rambler_autoreg repository.
 3. Run `install.bat`: this will install all the required libraries.
 4. Run `start.bat` to start the script.
 
 ## Settings (English)
-The script settings are located in the `./settings` folder.
+The script settings are located in the `./settings` folder. Run `start.bat` once to create the settings folder.
 
 The basic settings are contained in `settings.toml`:
 
