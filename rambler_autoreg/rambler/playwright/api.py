@@ -5,10 +5,10 @@ from playwright.sync_api import sync_playwright, BrowserContext, Page
 from playwright._impl._api_types import TimeoutError as PlaywrightTimeoutError
 
 # Libraries of this project
-from logger import logger
-from definitions import JS_DIR
-from rambler.playwright.captcha_solver import Solver
-from rambler.account_model import RamblerAccount
+from rambler_autoreg.logger import logger
+from rambler_autoreg.paths import JS_DIR
+from rambler_autoreg.rambler.playwright.captcha_solver import Solver
+from rambler_autoreg.rambler.account_model import RamblerAccount
 
 HCAPTCHA_SCRIPT_FILE_PATH = JS_DIR / 'hcaptcha.js'
 

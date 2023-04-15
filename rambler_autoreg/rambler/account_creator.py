@@ -9,8 +9,8 @@ from faker import Faker
 from faker.config import AVAILABLE_LOCALES
 
 # Libraries of this project
-from logger import logger
-from rambler.account_model import RamblerAccount, GENDERS
+from rambler_autoreg.logger import logger
+from rambler_autoreg.rambler.account_model import RamblerAccount, GENDERS
 
 
 ALPHABET = string.ascii_letters + string.digits

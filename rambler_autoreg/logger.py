@@ -1,14 +1,13 @@
 """Настройка логера Loguru"""
 from loguru import logger
 from datetime import datetime
-from os import makedirs
 import sys
 
 # Third-party libraries
 # -- There are no libraries here
 
 # Libraries of this project
-from definitions import LOG_DIR
+from rambler_autoreg.paths import LOG_DIR
 
 
 DEBUG = True

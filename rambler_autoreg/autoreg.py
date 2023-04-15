@@ -2,11 +2,11 @@
 # -- There are no libraries here
 
 # Libraries of this project
-from logger import logger
-from rambler.playwright.captcha_solver import Solver
-from rambler.playwright.api import PlaywrightRamblerAPI
-from rambler.account_model import RamblerAccount
-from rambler.account_creator import generate_rambler_account
+from rambler_autoreg.logger import logger
+from rambler_autoreg.rambler.playwright.captcha_solver import Solver
+from rambler_autoreg.rambler.playwright.api import PlaywrightRamblerAPI
+from rambler_autoreg.rambler.account_model import RamblerAccount
+from rambler_autoreg.rambler.account_creator import generate_rambler_account
 
 
 def autoreger(solver: Solver,

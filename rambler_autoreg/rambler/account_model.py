@@ -5,7 +5,7 @@ import re
 from pydantic import BaseModel, validator, root_validator
 
 # Libraries of this project
-from rambler.api import email_is_available
+from rambler_autoreg.rambler.api import email_is_available
 
 
 DOMAINS = ('@autorambler.ru', '@lenta.ru', '@myrambler.ru', '@rambler.ru', '@rambler.ua', '@ro.ru')

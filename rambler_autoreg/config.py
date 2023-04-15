@@ -3,7 +3,7 @@ from pydantic import BaseSettings
 import toml
 
 # Libraries of this project
-from definitions import SETTINGS_DIR
+from rambler_autoreg.paths import SETTINGS_DIR
 
 
 SETTINGS_TOML = SETTINGS_DIR / 'settings.toml'

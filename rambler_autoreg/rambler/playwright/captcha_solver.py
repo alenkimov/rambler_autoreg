@@ -5,8 +5,8 @@ import re
 from playwright.sync_api import Page
 
 # Libraries of this project
-from logger import logger
-from captcha_services import SERVICE_CLASSES, SERVICE_NAMES, CaptchaService
+from rambler_autoreg.logger import logger
+from rambler_autoreg.captcha_services import SERVICE_CLASSES, SERVICE_NAMES, CaptchaService
 
 
 class NoAPIKeysError(Exception):

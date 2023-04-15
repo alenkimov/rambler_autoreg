@@ -6,8 +6,8 @@ import json
 from slugify import slugify
 
 # Libraries of this project
-from logger import logger
-from definitions import OUTPUT_DIR
+from rambler_autoreg.logger import logger
+from rambler_autoreg.paths import OUTPUT_DIR
 
 
 def write(data, filename: str = 'data', *, add_date: bool = True):

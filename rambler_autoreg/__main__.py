@@ -1,11 +1,11 @@
 # Libraries of this project
-from config import settings, api_keys
-from rambler.playwright.captcha_solver import Solver, NoAPIKeysError
-from captcha_services import CaptchaServiceError
-from logger import setup as setup_logger
-from logger import logger
-from autoreg import autoreger
-from output import write
+from rambler_autoreg.config import settings, api_keys
+from rambler_autoreg.rambler.playwright.captcha_solver import Solver, NoAPIKeysError
+from rambler_autoreg.captcha_services import CaptchaServiceError
+from rambler_autoreg.logger import setup as setup_logger
+from rambler_autoreg.logger import logger
+from rambler_autoreg.autoreg import autoreger
+from rambler_autoreg.output import write
 
 
 def main():

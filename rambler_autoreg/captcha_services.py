@@ -9,7 +9,7 @@ from python_anticaptcha import AnticaptchaClient, HCaptchaTaskProxyless
 from python_anticaptcha.exceptions import AnticaptchaException
 
 # Libraries of this project
-from logger import logger
+from rambler_autoreg.logger import logger
 
 
 class CaptchaServiceError(Exception):
