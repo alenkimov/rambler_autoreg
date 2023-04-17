@@ -22,10 +22,13 @@ count = 1
 #   "ruCaptcha" and "AntiCaptcha"
 #   (Absents by default. 
 #    This means that a random service will be selected if API keys have been added)
-service = "AntiCaptcha"  # 
+service = "AntiCaptcha"
 
 # -- Registration --
 # Login (before @)
+#   Between 8 and 32 Latin letters, numbers, or symbols «._-».
+#   Must begin and end with a letter or number.
+#   No two identical special symbols may be used in a row.
 #   (Absents by default. This means that a random field will be generated for each account)
 login = "my_login"
 # Password
@@ -88,6 +91,9 @@ service = "AntiCaptcha"
 
 # -- Тонкости регистрации --
 # Поля авторизации
+#   От 8 до 32 латинских букв, цифр, или символов «._-».
+#   Должен начинаться и заканчиваться на букву или цифру.
+#   Нельзя использовать подряд два одинаковых спецсимвола.
 #   (По умолчанию отсутсвует. Это значит, что будут сгенерированы случайные поля для каждого аккаунта)
 login = "my_login"
 #   Пароль должен содержать от 8 до 32 символов, 
