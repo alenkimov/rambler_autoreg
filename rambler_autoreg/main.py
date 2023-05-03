@@ -1,10 +1,13 @@
+import csv
+
+from rambler_autoreg.paths import OUTPUT_DIR
 from rambler_autoreg.config import settings, api_keys
 from rambler_autoreg.rambler.playwright.captcha_solver import Solver, NoAPIKeysError
 from rambler_autoreg.captcha_services import CaptchaServiceError
 from rambler_autoreg.logger import setup as setup_logger
 from rambler_autoreg.logger import logger
 from rambler_autoreg.autoreg import autoreger
-from rambler_autoreg.output import write
+from rambler_autoreg.output import write_csv, write_txt, write_json
 
 
 def main():
@@ -29,7 +32,10 @@ def main():
                                   activate_imap=settings.imap,
                                   headed=settings.headed)
     for account in rambler_autoreger:
-        data = account.dict(include={'registration_datetime', 'imap_is_activated', 'password', 'secret'})
-        data.update({'email': account.email()})
-        accounts_data_to_write.append(data)
-    write(accounts_data_to_write, add_date=settings.add_date)
+        if account is not None and account.is_registered:
+            data = account.dict(include={'registration_datetime', 'imap_is_activated', 'password', 'secret'})
+            data.update({'email': account.email()})
+            accounts_data_to_write.append(data)
+            write_txt(account)
+            write_csv(account)
+    write_json(accounts_data_to_write, add_date=settings.add_date)

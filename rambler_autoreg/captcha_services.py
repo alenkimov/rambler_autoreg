@@ -38,7 +38,7 @@ class CaptchaService(ABC):
         pass
 
     def solve(self, url: str, sitekey: str):
-        logger.info(f'Solving captcha with {self.name}. url: {url}')
+        logger.debug(f'Solving captcha with {self.name}. url: {url}')
         try:
             return self._solve(url, sitekey)
         except Exception as e:

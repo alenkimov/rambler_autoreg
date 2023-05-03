@@ -1,7 +1,6 @@
-# Third-party libraries
-# -- There are no libraries here
+from playwright._impl._api_types import TimeoutError
+from datetime import datetime
 
-# Libraries of this project
 from rambler_autoreg.logger import logger
 from rambler_autoreg.rambler.playwright.captcha_solver import Solver
 from rambler_autoreg.rambler.playwright.api import PlaywrightRamblerAPI
@@ -35,9 +34,22 @@ def autoreger(solver: Solver,
     logger.info(f'Accounts to register: {count}')
     with PlaywrightRamblerAPI(solver, headed=headed) as rambler_api:
         for i in range(count):
+            start = datetime.now()
             logger.info(f'Account number {i + 1}..')
             account: RamblerAccount or None = generate_rambler_account(f'{login}{i + 1}' if login is not None else None,
-                                                                       domain, password, secret)
-            rambler_api.register(account, activate_imap=activate_imap)
-            logger.success(f'Account number {i + 1} was successfully registered')
-            yield account
+                                                                           domain, password, secret)
+            if account is not None:
+                try:
+                    rambler_api.register(account, activate_imap=activate_imap)
+                    finish = datetime.now()
+                    delta = finish - start
+                    logger.success(f'Account number {i + 1} was successfully registered in {delta.seconds} seconds')
+                except TimeoutError as error:
+                    logger.error(f'Account number {i + 1} was not registered: Timeout 30 seconds exceeded')
+                except Exception:
+                    logger.error(f'Account number {i + 1} was not registered')
+                    logger.exception(error)
+                yield account
+            else:
+                logger.error(f'Account number {i + 1} was not registered: wrong data')
+                yield None

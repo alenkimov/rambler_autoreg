@@ -1,5 +1,7 @@
 # Rambler Autoreg
 Python script for automatic mail registration on rambler.
+Supported formats: `.txt`, `.json` and `.csv`
+
 _Ниже есть инструкция на русском._
 
 ## Installation and Running on Windows
