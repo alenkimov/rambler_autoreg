@@ -46,7 +46,7 @@ def autoreger(solver: Solver,
                     logger.success(f'Account number {i + 1} was successfully registered in {delta.seconds} seconds')
                 except TimeoutError as error:
                     logger.error(f'Account number {i + 1} was not registered: Timeout 30 seconds exceeded')
-                except Exception:
+                except Exception as error:
                     logger.error(f'Account number {i + 1} was not registered')
                     logger.exception(error)
                 yield account
