@@ -6,6 +6,7 @@ from rambler_autoreg.rambler.playwright.captcha_solver import Solver
 from rambler_autoreg.rambler.playwright.api import PlaywrightRamblerAPI
 from rambler_autoreg.rambler.account_model import RamblerAccount
 from rambler_autoreg.rambler.account_creator import generate_rambler_account
+from rambler_autoreg.captcha_services import CaptchaServiceError
 
 
 def autoreger(solver: Solver,
@@ -44,12 +45,14 @@ def autoreger(solver: Solver,
                     finish = datetime.now()
                     delta = finish - start
                     logger.success(f'Account number {i + 1} was successfully registered in {delta.seconds} seconds')
-                except TimeoutError as error:
+                except TimeoutError:
                     logger.error(f'Account number {i + 1} was not registered: Timeout 30 seconds exceeded')
+                except CaptchaServiceError:
+                    logger.error(f'Account number {i + 1} was not registered: Captcha service error')
                 except Exception as error:
                     logger.error(f'Account number {i + 1} was not registered')
                     logger.exception(error)
                 yield account
             else:
-                logger.error(f'Account number {i + 1} was not registered: wrong data')
+                logger.error(f'Account number {i + 1} was not registered: Wrong data')
                 yield None
