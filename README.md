@@ -1,13 +1,15 @@
 # Rambler Autoreg
 Python script for automatic mail registration on rambler.
+_Ниже есть инструкция на русском._
 
 ## Installation and Running on Windows
 1. Install [Python 3.11](https://www.python.org/downloads/windows/), checking "Add Python to PATH".
-2. [Download](https://github.com/AlenKimov/rambler_autoreg/archive/refs/heads/main.zip) and unzip the rambler_autoreg repository.
-3. Run `install.bat`: this will install all the required libraries.
-4. Run `start.bat` to start the script.
+2. Install [Poetry](https://python-poetry.org/docs/).
+3. [Download](https://github.com/AlenKimov/rambler_autoreg/archive/refs/heads/main.zip) and unzip the rambler_autoreg repository.
+4. Run `install.bat`: this will install all the required libraries.
+5. Run `start.bat` to start the script. It'll create settings folder.
 
-## Settings (English)
+## Settings
 The script settings are located in the `./settings` folder. Run `start.bat` once to create the settings folder.
 
 The basic settings are contained in `settings.toml`:
@@ -72,7 +74,23 @@ ruCaptcha = 'api_key'
 AntiCaptcha = 'api_key'
 ```
 
-## Настройки (Русский)
+## Запуск под Windows
+- Установите [Python 3.11](https://www.python.org/downloads/windows/). Не забудьте поставить галочку напротив "Add Python to PATH".
+- Установите пакетный менеджер [Poetry](https://python-poetry.org/docs/).
+- Установите [git](https://git-scm.com/download/win).
+- С помощью командной строки склонируйте этот репозиторий, после чего перейдите в него:
+```bash
+git clone https://github.com/AlenKimov/rambler_autoreg.git
+cd rambler_autoreg
+```
+- Установите требуемые библиотеки с помощью Poetry и запустите бота:
+```bash
+poetry update
+poetry run playwright install
+poetry run python start.py
+```
+
+## Настройки
 Настройки скрипта находятся в папке `./settings`.
 
 Основные настройки содержаться в `settings.toml`:

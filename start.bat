@@ -1,5 +1,4 @@
 @echo off
 python -V
-call .venv\Scripts\activate.bat
-python -m rambler_autoreg
+poetry run python start.py
 pause

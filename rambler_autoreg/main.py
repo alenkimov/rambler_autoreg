@@ -1,4 +1,3 @@
-# Libraries of this project
 from rambler_autoreg.config import settings, api_keys
 from rambler_autoreg.rambler.playwright.captcha_solver import Solver, NoAPIKeysError
 from rambler_autoreg.captcha_services import CaptchaServiceError
@@ -34,7 +33,3 @@ def main():
         data.update({'email': account.email()})
         accounts_data_to_write.append(data)
     write(accounts_data_to_write, add_date=settings.add_date)
-
-
-if __name__ == '__main__':
-    main()

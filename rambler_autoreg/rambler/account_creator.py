@@ -1,3 +1,4 @@
+from nickname_generator import generate
 from datetime import date
 import string
 import secrets
@@ -32,9 +33,10 @@ def generate_birthday():
     return birthday
 
 
-def generate_login(length: int = DEFAULT_LOGIN_LENGTH) -> str:
-    login = secrets.token_hex(length // 2)
-    logger.debug(f'Успешно сгенерирован логин длины {length}: {login}')
+def generate_login(locale: str = DEFAULT_LOCALE, length: int = DEFAULT_LOGIN_LENGTH) -> str:
+    if locale not in AVAILABLE_LOCALES: locale = DEFAULT_LOCALE
+    login = generate().lower() + '.' + generate().lower()
+    logger.debug(f'Успешно сгенерирован логин: {login}')
     return login
 
 
@@ -69,7 +71,7 @@ def generate_name(locale: str = DEFAULT_LOCALE, gender: str = DEFAULT_GENDER) ->
     if gender not in GENDERS: gender = DEFAULT_GENDER
     fake = Faker(locale)
     firstname = fake.first_name_male() if gender == 'Male' else fake.first_name_female()
-    lastname  = fake.last_name_male()  if gender == 'Male' else fake.last_name_female()
+    lastname = fake.last_name_male()  if gender == 'Male' else fake.last_name_female()
     logger.debug(f'Успешно сгенерированы имя и фамилия: {firstname} {lastname}')
     return firstname, lastname
 

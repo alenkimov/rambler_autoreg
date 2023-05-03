@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "rambler-autoreg"
+version = "1.0"
+description = "Rambler autoreg"
+authors = ["Alen <alen.kimov@gmail.com>"]
+readme = "README.md"
+packages = [{include = "rambler_autoreg"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-slugify = "^8.0.1"
+playwright = "^1.33.0"
+2captcha-python = "^1.2.0"
+requests = "^2.29.0"
+pydantic = "^1.10.7"
+faker = "^18.6.1"
+loguru = "^0.7.0"
+toml = "^0.10.2"
+python-anticaptcha = "^1.0.0"
+nickname-generator = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

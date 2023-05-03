@@ -28,13 +28,23 @@ def write(data, filename: str = 'data', *, add_date: bool = True):
     filename = slugify(filename)
     if add_date:
         now_datetime = f'{datetime.now().strftime("%d-%m-%Y_%H-%M-%S")}'
-        full_filename = f'{filename}_{now_datetime}.json'
+        json_filename = f'{filename}_{now_datetime}.json'
+        txt_filename = f'{filename}_{now_datetime}.txt'
     else:
-        full_filename = f'{filename}.json'
-    filepath = OUTPUT_DIR / full_filename
+        json_filename = f'{filename}.json'
+        txt_filename = f'{filename}.txt'
+    json_filepath = OUTPUT_DIR / json_filename
+    txt_filepath = OUTPUT_DIR / txt_filename
 
-    with open(filepath, 'w', encoding='utf-8') as file:
+    with open(json_filepath, 'w', encoding='utf-8') as file:
         json.dump(data, file, indent=4, ensure_ascii=False, default=str)
         # ensure_ascii=False — Для русских символов
         # default=str — Для сериализации datetime.datetime, datetime.date
-    logger.success(f'Data was successfully written to the file {full_filename}')
+    logger.success(f'Data was successfully written to the file {json_filepath}')
+    with open(txt_filepath, 'w', encoding='utf-8') as file:
+        for account in data:
+            email = account['email']
+            password = account['password']
+            secret = account['secret']
+            file.write(f'{email}:{password}:{secret}\n')
+    logger.success(f'Data was successfully written to the file {json_filepath}')
