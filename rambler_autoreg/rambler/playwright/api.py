@@ -73,24 +73,24 @@ class PlaywrightRamblerAPI:
         # Новая вкладка
         page = context.new_page()
         page.goto('https://id.rambler.ru/login-20/mail-registration')
+        page.wait_for_timeout(500)  # Ждем полсекунды
 
         # Форма с полями для ввода данных
         form = page.locator('form')
-        form.locator('label[for=reg_recaptcha]').wait_for()  # Ждем полной загрузки формы
 
         # Ввод логина и выбор домена
-        form.locator('input[id=reg_login]').type(login)
+        form.locator('input[id=login]').type(login)
         form.locator('input[value="@rambler.ru"]').click()
         form.get_by_text(domain).click()
 
         # Ввод пароля reg_new_password reg_confirm_password
-        form.locator('input[id=reg_new_password]').type(password)
-        form.locator('input[id=reg_confirm_password]').type(password)
+        form.locator('input[id=newPassword]').type(password)
+        form.locator('input[id=confirmPassword]').type(password)
 
         # Выбор и ввод секретного вопроса
         form.locator('//section[4]/div/div/div/div/div/div/input').click()
         form.get_by_text("Кличка домашнего животного").click()
-        form.locator('input[id=reg_answer]').type(secret)
+        form.locator('input[id=answer]').type(secret)
 
         # Решение капчи
         self._solver.solve(page)
