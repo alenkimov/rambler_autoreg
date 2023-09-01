@@ -1,5 +1,5 @@
 # pycache
-rambler_autoreg/__pycache__
+bot/__pycache__
 __pycache__
 
 # dotfiles
@@ -7,7 +7,8 @@ __pycache__
 .idea
 
 # custom
-rambler_autoreg/test*
-settings
-output
 log
+input
+output
+config/*
+!config/.default

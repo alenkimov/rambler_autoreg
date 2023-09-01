@@ -1,0 +1,19 @@
+LOGGING_LEVEL = "INFO"
+IGNORE_ERRORS = true
+HIDE_SECRETS = true
+HEADLESS = true
+
+# Limits
+MAX_TASKS = 5
+DELAY_RANGE = [90, 150]
+
+# Anticaptcha
+ANTICAPTCHA_API_KEY = ""
+
+# Defaults
+DOMAIN = "@rambler.ru"
+GENDER = "Male"
+LOCALE = "en_US"
+LOGIN_LENGTH = 16
+PASSWORD_LENGTH = 16
+SECRET_LENGTH = 12
