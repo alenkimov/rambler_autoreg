@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rambler-autoreg"
-version = "2.0"
+version = "2.1"
 description = "Rambler autoreg"
 authors = ["Alen <alen.kimov@gmail.com>"]
 readme = "README.md"

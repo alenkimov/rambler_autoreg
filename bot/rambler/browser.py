@@ -112,15 +112,20 @@ class PlaywrightRamblerAPI:
             captcha_token: str,
             account: RamblerAccount,
     ):
-        # Новая вкладка
-        page = await context.new_page()
-        url = 'https://id.rambler.ru/login-20/mail-registration'
-        await page.goto(url)
-        await page.wait_for_timeout(500)  # Ждем полсекунды
-
         try:
+            # Новая вкладка
+            page = await context.new_page()
+            url = 'https://id.rambler.ru/login-20/mail-registration'
+            await page.goto(url)
+            await page.wait_for_timeout(1000)
+
             # Форма с полями для ввода данных
             form = page.locator('form')
+
+            # Переключаем тип верификации на секретный вопрос
+            radio_button = form.locator('//*[@data-cerber-id="registration_form::mail::step_1::verification_type::question"]')
+            if await radio_button.is_visible():
+                await radio_button.click()
 
             # Ввод логина и выбор домена
             await form.locator('input[id=login]').type(account.login)
@@ -156,7 +161,6 @@ class PlaywrightRamblerAPI:
             await page.get_by_text(GENDER_TO_PLACEHOLDER[account.gender]).click()
 
             # Ввод дня рождения
-
             await page.get_by_placeholder('День').click()
             await page.get_by_text(str(account.birthday.day), exact=True).click()
 
