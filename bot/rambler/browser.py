@@ -160,17 +160,22 @@ class PlaywrightRamblerAPI:
             await page.locator('#gender').click()
             await page.get_by_text(GENDER_TO_PLACEHOLDER[account.gender]).click()
 
-            # Ввод дня рождения
-            await page.get_by_placeholder('День').click()
-            await page.get_by_text(str(account.birthday.day), exact=True).click()
+            if await page.get_by_placeholder('День').is_visible():
+                # Ввод дня рождения
+                await page.get_by_placeholder('День').click()
+                await page.get_by_text(str(account.birthday.day), exact=True).click()
 
-            # Ввод месяца рождения
-            await page.get_by_placeholder("Месяц").click()
-            await page.get_by_text(MONTH_NUMBER_TO_PLACEHOLDER[account.birthday.month], exact=True).click()
+                # Ввод месяца рождения
+                await page.get_by_placeholder("Месяц").click()
+                await page.get_by_text(MONTH_NUMBER_TO_PLACEHOLDER[account.birthday.month], exact=True).click()
 
-            # Ввод года рождения
-            await page.get_by_placeholder("Год").click()
-            await page.get_by_text(str(account.birthday.year), exact=True).click()
+                # Ввод года рождения
+                await page.get_by_placeholder("Год").click()
+                await page.get_by_text(str(account.birthday.year), exact=True).click()
+            else:
+                birthday_calendar = form.locator('#birthday')
+                birthday_str = f"{account.birthday.year}-{account.birthday.month:02d}-{account.birthday.day:02d}"
+                await birthday_calendar.fill(birthday_str)
 
             # Отправка формы
             await page.click("button[type=submit]")
